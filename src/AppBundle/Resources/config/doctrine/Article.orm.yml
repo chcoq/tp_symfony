@@ -1,0 +1,38 @@
+AppBundle\Entity\Article:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ArticleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+        nom:
+            type: string
+            length: '100'
+        description:
+            type: text
+        prix:
+            type: float
+        stockRestant:
+            type: integer
+            column: stockRestant
+
+    manyToMany:
+        commandes:
+            targetEntity: Commande
+            inversedBy: articles
+
+
+
+
+    lifecycleCallbacks: {  }
+
+
+
+#un utilisateur a plusieurs commandes,
+# et une commande a un seul utilisateur

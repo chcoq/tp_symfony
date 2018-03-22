@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block body %}
+
+    {% for art in articles %}
+
+        <div class="jumbotron">
+            <h4 style="font-weight:bold;">Nom : {{ art.nom }} </h4>
+            <a href="{{ path ('detail',{'id':art.id}) }}">Détail {{ art.id }}</a>
+            {#<a href="{{ path ('article_delete',{'id':art.id}) }}">Supprimer l'article {{ art.id }}</a>#}
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
+
+

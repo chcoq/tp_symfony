@@ -1,0 +1,50 @@
+AppBundle\Entity\Utilisateur:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\UtilisateurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        created:
+            type: datetime
+        email:
+            type: string
+            length: '255'
+        nom:
+            type: string
+            length: '100'
+        prenom:
+            type: string
+            length: '100'
+        codePostal:
+            type: integer
+            column: code_postal
+        telephone:
+            type: integer
+        username:
+            type: string
+            length: '100'
+        password:
+            type: string
+            length: '255'
+
+    oneToMany:
+        commandes:
+            targetEntity: Commande
+            mappedBy: utilisateur
+            cascade: ['all']
+
+
+
+
+    lifecycleCallbacks: {  }
+
+
+
+
+#un utilisateur a plusieurs commandes,
+# et une commande a un seul utilisateur

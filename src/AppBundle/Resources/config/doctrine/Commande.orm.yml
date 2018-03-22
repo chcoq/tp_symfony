@@ -1,0 +1,35 @@
+AppBundle\Entity\Commande:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\CommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+        numeroCommande:
+            type: integer
+            column: numero_commande
+
+    manyToMany:
+        articles:
+            targetEntity: Article
+            mappedBy: commandes
+            cascade: ['all']
+
+    manyToOne:
+        utilisateur:
+            targetEntity: Utilisateur
+            mappdeBy: commandes
+
+
+    lifecycleCallbacks: {  }
+
+
+
+#un utilisateur a plusieurs commandes,
+# et une commande a un seul utilisateur
